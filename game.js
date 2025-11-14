@@ -152,7 +152,7 @@ class InvestigationGame {
       resultHTML = `
                 <h2 style="color: #27ae60;">✅ CASO RESOLVIDO!</h2>
                 <p><strong>Parabéns, Sherlock Holmes!</strong> Você desvendou o mistério e identificou o culpado!</p>
-                <p>Como prêmio, você recebe um <strong>vale papo bebendo uma cervejinha</strong></p>
+                <p>Como prêmio, você recebe um <strong>vale papo bebendo uma cervejinha do seu "inimigo"</strong></p>
                 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 500px; border: 3px #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
                     <div style="background: white; padding: 20px; border-radius: 8px; text-align: center;">
                         <h4 style="color: #667eea; margin: 0 0 10px 0;">🍺 CUPOM VÁLIDO 🍺</h4>
@@ -207,7 +207,7 @@ class InvestigationGame {
                 <h2 style="color: #e74c3c;">❌ ACUSAÇÃO INCORRETA</h2>
                 <p><strong>O tribunal rejeita suas acusações!</strong> Você acusou <strong>${suspect.name}</strong>, mas essa pessoa tinha um álibi sólido.</p>
 
-                <p>Porém como prêmio de consolação, você recebe um <strong>vale papo bebendo uma cervejinha</strong></p>
+                <p>Porém como prêmio de consolação, você recebe um <strong>vale papo bebendo uma cervejinha do seu "inimigo"</strong></p>
                 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 500px; border: 3px #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
                     <div style="background: white; padding: 20px; border-radius: 8px; text-align: center;">
                         <h4 style="color: #667eea; margin: 0 0 10px 0;">🍺 CUPOM VÁLIDO 🍺</h4>
