@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detetive: O Caso do Roubo no Museu</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <header>
+        <h1>🔍 Detetive: O Caso do Roubo no Museu</h1>
+        <div class="status-bar">
+          <span id="pistas-count">Pistas: 0/5</span>
+          <span id="interrogatorios">Interrogatórios: 0/3</span>
+        </div>
+      </header>
+
+      <div id="intro-screen" class="screen active">
+        <div class="story-box">
+          <h2>🏛️ O Caso do Roubo no Museu Nacional</h2>
+          <p>
+            <strong>Data: 14 de novembro de 2025 | 06:30h</strong>
+          </p>
+          <p>
+            Seu telefone toca às 6 da manhã. É o Capitão Rodrigues:
+            <em
+              >"Precisamos de você imediatamente. Temos um código vermelho no
+              Museu Nacional."</em
+            >
+          </p>
+          <p>
+            Ao chegar ao local, você é recebido por uma cena perturbadora. A
+            pintura mais valiosa do museu—<strong>"A Dama de Azul"</strong>, uma
+            obra-prima de 1887 avaliada em 3 milhões de euros—desapareceu
+            durante a noite. Apenas uma moldura vazia permanece na parede da
+            Sala Principal.
+          </p>
+          <p>
+            O mais intrigante: <strong>não há sinais de arrombamento</strong>.
+            Todas as portas e janelas estavam trancadas de manhã. O sistema de
+            alarme estava ativado. Isso só pode significar uma coisa...
+          </p>
+          <p
+            style="
+              text-align: center;
+              font-size: 1.2em;
+              color: #e74c3c;
+              font-weight: bold;
+              margin: 15px 0;
+            "
+          >
+            ⚠️ FOI UM TRABALHO INTERNO ⚠️
+          </p>
+
+          <h3>🎯 Sua Missão:</h3>
+          <ul>
+            <li>
+              🔎 <strong>Investigar a cena do crime</strong> - Examine 5 locais
+              críticos em busca de evidências
+            </li>
+            <li>
+              💬 <strong>Interrogar os suspeitos</strong> - Questione as 3
+              pessoas que tinham acesso ao museu
+            </li>
+            <li>
+              🧩 <strong>Conectar as pistas</strong> - Analise as evidências e
+              encontre contradições nos depoimentos
+            </li>
+            <li>
+              👤 <strong>Identificar o culpado</strong> - Acuse a pessoa certa
+              antes que ela fuja do país!
+            </li>
+          </ul>
+
+          <h3>👥 Suspeitos sob Investigação:</h3>
+          <ul>
+            <li>
+              📚 <strong>Dr. Henrique Silva</strong> - Curador do museu há 15
+              anos. Conhece todos os segredos do lugar, incluindo códigos de
+              segurança. Recentemente ficou viúvo e se casou novamente.
+            </li>
+            <li>
+              🔒 <strong>Marina Costa</strong> - Segurança noturna há 3 anos.
+              Ex-militar, extremamente observadora. Estava de plantão na noite
+              do crime.
+            </li>
+            <li>
+              🎨 <strong>Carlos Méndez</strong> - Restaurador-chefe há 2 anos.
+              Jovem talento formado na prestigiosa Academia de Florença.
+              Especialista em pinturas antigas.
+            </li>
+          </ul>
+
+          <button class="btn btn-primary" onclick="game.startGame()">
+            🔍 Iniciar Investigação
+          </button>
+        </div>
+      </div>
+
+      <div id="game-screen" class="screen">
+        <div class="game-content">
+          <div class="locations">
+            <h3>Locais para Investigar:</h3>
+            <div class="location-grid">
+              <button
+                class="location-btn"
+                onclick="game.investigateLocation('sala-principal')"
+                id="loc-sala"
+              >
+                🖼️ Sala Principal
+              </button>
+              <button
+                class="location-btn"
+                onclick="game.investigateLocation('escritorio')"
+                id="loc-escritorio"
+              >
+                🗄️ Escritório
+              </button>
+              <button
+                class="location-btn"
+                onclick="game.investigateLocation('entrada')"
+                id="loc-entrada"
+              >
+                🚪 Entrada
+              </button>
+              <button
+                class="location-btn"
+                onclick="game.investigateLocation('deposito')"
+                id="loc-deposito"
+              >
+                📦 Depósito
+              </button>
+              <button
+                class="location-btn"
+                onclick="game.investigateLocation('cameras')"
+                id="loc-cameras"
+              >
+                📹 Sala de Câmeras
+              </button>
+            </div>
+          </div>
+
+          <div class="suspects">
+            <h3>Interrogar Suspeitos:</h3>
+            <div class="suspect-grid">
+              <button
+                class="suspect-btn"
+                onclick="game.interrogate('silva')"
+                id="suspect-silva"
+              >
+                📚 Dr. Silva
+              </button>
+              <button
+                class="suspect-btn"
+                onclick="game.interrogate('marina')"
+                id="suspect-marina"
+              >
+                🔒 Marina
+              </button>
+              <button
+                class="suspect-btn"
+                onclick="game.interrogate('carlos')"
+                id="suspect-carlos"
+              >
+                🎨 Carlos
+              </button>
+            </div>
+          </div>
+
+          <div class="evidence-box">
+            <h3>📋 Pistas Coletadas:</h3>
+            <ul id="evidence-list">
+              <li class="no-evidence">Nenhuma pista coletada ainda...</li>
+            </ul>
+          </div>
+
+          <button
+            class="btn btn-solve"
+            onclick="game.showSolution()"
+            id="solve-btn"
+            disabled
+          >
+            🎯 Acusar o Culpado
+          </button>
+        </div>
+      </div>
+
+      <div id="solution-screen" class="screen">
+        <div class="story-box">
+          <h2>⚖️ Quem é o Culpado?</h2>
+          <p>
+            Com base nas pistas coletadas, quem você acredita que roubou a
+            pintura?
+          </p>
+          <div class="solution-options">
+            <button class="solution-btn" onclick="game.accuseSuspect('silva')">
+              📚 Dr. Silva
+            </button>
+            <button class="solution-btn" onclick="game.accuseSuspect('marina')">
+              🔒 Marina
+            </button>
+            <button class="solution-btn" onclick="game.accuseSuspect('carlos')">
+              🎨 Carlos
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="result-screen" class="screen">
+        <div class="story-box result-box">
+          <div id="result-content"></div>
+          <button class="btn btn-primary" onclick="game.restart()">
+            Jogar Novamente
+          </button>
+        </div>
+      </div>
+
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="game.closeModal()">&times;</span>
+          <div id="modal-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
